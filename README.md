@@ -1,50 +1,39 @@
-# Vvps
-A cloud-based Virtual Power Plant (VPP) system that aggregates distributed, small-scale energy sources into a unified provider for grid-level power. Enables efficient energy distribution and allows producers to sell power to utilities. Supports solar, wind, storage, and other resources.
+⚡ Virtual Power Plant (Battery API)
+A Spring Boot REST API for managing battery data in a Virtual Power Plant (VPP). It supports battery registration, querying by postcode range, and provides total and average watt capacity with names sorted alphabetically.
+
+🚀 Features
+Register batteries (name, postcode, watt capacity)
+
+Fetch batteries by postcode range
+
+Return:
+
+Sorted battery names
+
+Total and average watt capacity
+
+Java Streams for processing
+
+≥ 70% unit test coverage
+
+🔌 Example API Usage
+➕ Register a Battery :
+curl.exe -X POST "http://localhost:8080/api/vvp/battery" ^
+  -H "Content-Type: application/json" ^
+  -d "{ \"name\": \"Test Battery\", \"postCode\": 1234, \"wattCapacity\": 50000 }"
+🔍 Get Batteries in Postcode Range
+ 
+curl.exe -X GET "http://localhost:8080/api/vvp/batteries?minPostCode=1000&maxPostCode=7000"
 
 
-# ⚡ Virtual Power Plant (Battery API) - Spring Boot Application
+🔧 Tech Stack
+Java 17, Spring Boot 3
 
-A Spring Boot REST API for managing and querying batteries in a virtual power plant system. It supports concurrent battery registration, efficient data queries using Java Streams, and integration with a PostgreSQL database hosted on [Render](https://render.com/).
+Spring Web, Spring Data JPA
 
----
+PostgreSQL (Render)
 
-## 🚀 Features
+Lombok, JUnit 5, Testcontainers
 
-### ✅ Core Features (as per assignment):
-- REST API with Spring Boot
-- Accepts and saves battery data: `name`, `postcode`, and `watt capacity`
-- Fetches batteries within a given postcode range
-- Returns:
-  - Alphabetically sorted battery names
-  - Total watt capacity
-  - Average watt capacity
-- Uses Java Streams for sorting and statistical calculations
-- Unit test coverage ≥ 70%
+SLF4J, Logback
 
-### ✨ Additional Enhancements:
-- ✅ **PostgreSQL integration** (hosted on Render)
-- ✅ **Asynchronous processing** with `@Async`
-- ✅ **Robust logging** using SLF4J
-- ✅ **Integration tests** using **Testcontainers**
-- ✅ **Handles high-volume concurrent battery registrations**
-
----
-
-## 🔧 Tech Stack
-
-- Java 17+
-- Spring Boot 3+
-- Spring Web
-- Spring Data JPA
-- PostgreSQL (Render-hosted)
-- Lombok
-- JUnit 5 + AssertJ
-- Testcontainers
-- SLF4J + Logback
-
----
-
-## 🏗️ Architecture Overview
-
-```plaintext
-Controller → Service → Mapper → Repository → PostgreSQL
