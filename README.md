@@ -27,7 +27,7 @@ curl.exe -X GET "http://localhost:8080/api/vvp/batteries?minPostCode=1000&maxPos
 
 
 🔧 Tech Stack
-Java 17, Spring Boot 3
+Java 21, Spring Boot 3
 
 Spring Web, Spring Data JPA
 
