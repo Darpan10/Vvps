@@ -37,7 +37,7 @@ public class BatteryService {
             return CompletableFuture.completedFuture(savedBattery);
         } catch (Exception e) {
             logger.error("An error occurred while saving the battery: {}", batteryDto, e);
-            throw new RuntimeException("Failed to save battery", e);
+            return CompletableFuture.failedFuture(new RuntimeException("Failed to save battery", e));
         }
     }
 
